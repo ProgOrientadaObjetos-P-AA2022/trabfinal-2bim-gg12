@@ -23,19 +23,21 @@ public class Principal {
             switch (op) {
                 case 1 -> {
                     obj.entrada.nextLine();
-                    System.out.println("Ingrese su nombre:");
+                    System.out.println("DATOS DEL CLIENTE");
+                    System.out.println("Ingrese nombre:");
                     String nombre1 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su cedula:");
+                    System.out.println("Ingrese cedula:");
                     String cedula1 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su ciudad de residencia:");
+                    System.out.println("Ciudad de residencia:");
                     String ciudad1 = obj.entrada.nextLine();
-                    System.out.println("Ingrese la marca de su dispositivo:");
+                    System.out.println("Marca celular:");
                     String marca1 = obj.entrada.nextLine();
-                    System.out.println("Ingrese el modelo de su dispositivo:");
+                    System.out.println("Modelo celular:");
                     String modelo1 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su numero celular:");
+                    System.out.println("Numero celular:");
                     String numero1 = obj.entrada.nextLine();
-
+                    
+                    System.out.println("PLAN POST MINUTOS");
                     System.out.println("Ingrese los minutos nacionales:");
                     int minutosN1 = obj.entrada.nextInt();
                     System.out.println("Ingrese el costo por minuto nacional:");
@@ -55,19 +57,21 @@ public class Principal {
                 }
                 case 2 -> {
                     obj.entrada.nextLine();
-                    System.out.println("Ingrese su nombre:");
+                   System.out.println("DATOS DEL CLIENTE");
+                    System.out.println("Ingrese nombre:");
                     String nombre2 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su cedula:");
+                    System.out.println("Ingrese cedula:");
                     String cedula2 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su ciudad de residencia actual:");
+                    System.out.println("Ciudad de residencia:");
                     String ciudad2 = obj.entrada.nextLine();
-                    System.out.println("Ingrese la marca de su dispositivo:");
+                    System.out.println("Marca celular:");
                     String marca2 = obj.entrada.nextLine();
-                    System.out.println("Ingrese el modelo de su dispositivo:");
+                    System.out.println("Modelo celular:");
                     String modelo2 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su numero celular:");
+                    System.out.println("Numero celular:");
                     String numero2 = obj.entrada.nextLine();
-
+                    
+                    System.out.println("PLAN POST MEGA");
                     System.out.println("Ingrese la tarifa base:");
                     double tarifa2 = obj.entrada.nextDouble();
                     System.out.println("Ingrese el numero de Gigas:");
@@ -85,19 +89,21 @@ public class Principal {
                 }
                 case 3 -> {
                     obj.entrada.nextLine();
-                    System.out.println("Ingrese su nombre:");
+                    System.out.println("DATOS DEL CLIENTE");
+                    System.out.println("Ingrese nombre:");
                     String nombre3 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su cedula:");
+                    System.out.println("Ingrese cedula:");
                     String cedula3 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su ciudad de residencia actual:");
+                    System.out.println("Ciudad de residencia:");
                     String ciudad3 = obj.entrada.nextLine();
-                    System.out.println("Ingrese la marca de su dispositivo:");
+                    System.out.println("Marca celular:");
                     String marca3 = obj.entrada.nextLine();
-                    System.out.println("Ingrese el modelo de su dispositivo:");
+                    System.out.println("Modelo celular:");
                     String modelo3 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su numero celular:");
+                    System.out.println("Numero celular:");
                     String numero3 = obj.entrada.nextLine();
-
+                    
+                    System.out.println("PLAN POST MEGA MINUTOS");
                     System.out.println("Ingrese los minutos:");
                     int minutos3 = obj.entrada.nextInt();
                     System.out.println("Ingrese el costo por minuto:");
@@ -118,18 +124,21 @@ public class Principal {
                 case 4 -> {
                     obj.entrada.nextLine();
                     System.out.println("Ingrese su nombre:");
+                    System.out.println("DATOS DEL CLIENTE");
+                    System.out.println("Ingrese nombre:");
                     String nombre4 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su cedula:");
+                    System.out.println("Ingrese cedula:");
                     String cedula4 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su ciudad de residencia actual:");
+                    System.out.println("Ciudad de residencia:");
                     String ciudad4 = obj.entrada.nextLine();
-                    System.out.println("Ingrese la marca de su dispositivo:");
+                    System.out.println("Marca celular:");
                     String marca4 = obj.entrada.nextLine();
-                    System.out.println("Ingrese el modelo de su dispositivo:");
+                    System.out.println("Modelo celular:");
                     String modelo4 = obj.entrada.nextLine();
-                    System.out.println("Ingrese su numero celular:");
+                    System.out.println("Numero celular:");
                     String numero4 = obj.entrada.nextLine();
-
+                    
+                    System.out.println("PLAN POST MEGA POR MINUTO ECONOMICO");
                     System.out.println("Ingrese los minutos:");
                     int minutos4 = obj.entrada.nextInt();
                     System.out.println("Ingrese el costo por minuto:");
