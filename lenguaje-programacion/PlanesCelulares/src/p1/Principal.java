@@ -13,11 +13,11 @@ public class Principal {
     public static void main(String[] args) throws SQLException {
         Principal obj = new Principal();
         int op;
-        ArrayList<PlanCelular> lista = new ArrayList<>();
         Enlace1 e1 = new Enlace1();
         Enlace2 e2 = new Enlace2();
         Enlace3 e3 = new Enlace3();
         Enlace4 e4 = new Enlace4();
+        ArrayList<PlanCelular> lista = new ArrayList<>();
         do {
             op = obj.menu();
             switch (op) {
@@ -187,12 +187,15 @@ public class Principal {
 
     public int menu() {
         int opc;
-        System.out.println("Crear Plan Post Pago Minutos                 |1|");
-        System.out.println("Crear Plan Post PagoMegas                    |2|");
-        System.out.println("Crear Plan Post Pago Minutos Megas           |3|");
-        System.out.println("Crear Plan Post Pago Minutos Megas Economico |4|");
-        System.out.println("Mostar objetos en base de datos              |5|");
-        System.out.println("Terminar y Mostrar objetos ingresados        |0|");
+        
+        System.out.println("Ingrese la accion que desea realizar");
+        System.out.println("TIPOS DE PLANES:");
+        System.out.println("1. Plan Post Pago Minutos");
+        System.out.println("2. Plan Post PagoMegas");
+        System.out.println("3. Plan Post Pago Minutos Megas");
+        System.out.println("4. Plan Post Pago Minutos Megas Economico");
+        System.out.println("5. Mostar objetos en base de datos");
+        System.out.println("0. Terminar y Mostrar objetos ingresados");
         opc = entrada.nextInt();
         return opc;
     }
