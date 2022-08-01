@@ -10,15 +10,19 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
-public class Enlace1 {
+public class Enlace4MIN {
     
     private Connection conn;
        
     public void establecerConexion() {  
 
         try {  
-            String url = "jdbc:sqlite:bd/PlanPostPagoMinutos.db";  
+            // db parameters  
+            String url = "jdbc:sqlite:bd/PlanPostPago.db";  
+            // create a connection to the database  
             conn = DriverManager.getConnection(url);  
+            // System.out.println(conn.isClosed());
+            // System.out.println("Connection to SQLite has been established.");  
               
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
@@ -30,7 +34,7 @@ public class Enlace1 {
         return conn;
     }
     
-    public void insertarPlanPostPagoMinutos(PlanPostPagoMinutos c) {  
+    public void insertarPlanPostPagoMinutos(PlanPostPagoMinutos pppm) {  
   
         try{  
             establecerConexion();
@@ -39,19 +43,19 @@ public class Enlace1 {
                     + "Cedula, Ciudad, Marca, Modelo, Numero, MinutosN, CostoXMinN,"
                     + "MinutosI, CostoXMinI, PagoMensual)"
                     + "values ('%s', '%s', '%s', '%s', '%s', '%s', '%d',"
-                    + "'%.2f', '%d', '%.2f', '%.2f')", 
-                    c.obtenerNombre(), c.obtenerCedula(), 
-                    c.obtenerCiudad(), c.obtenerMarca(), 
-                    c.obtenerModelo(), c.obtenerNumero(), 
-                    c.obtenerMinN(), c.obtenerCostoMinN(),
-                    c.obtenerMinInt(), c.obtenerCostoMinInt(),
-                    c.obtenerPagoMensual());
+                    + "%s, '%d', %s, %s)", 
+                    pppm.obtenerNombre(), pppm.obtenerCedula(), 
+                    pppm.obtenerCiudad(), pppm.obtenerMarca(), 
+                    pppm.obtenerModelo(), pppm.obtenerNumero(), 
+                    pppm.obtenerMinN(), pppm.obtenerCostoMinN(),
+                    pppm.obtenerMinInt(), pppm.obtenerCostoMinInt(),
+                    pppm.obtenerPagoMensual());
             
             statement.executeUpdate(data);
             obtenerConexion().close();
             
         } catch (SQLException e) {  
-             System.err.println("Error al insertar PlanPostPagoMinutos");
+             System.err.println("ERROR: no se pudo insertar PlanPostPagoMinutos");
              System.out.println(e.getMessage());  
              
         }  
@@ -62,7 +66,7 @@ public class Enlace1 {
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = "Select * from PlanPostPagoMinutos ;";
+            String data = "Select * from PlanPostPagoMinutos;";
             
             ResultSet rs = statement.executeQuery(data);
             while(rs.next()){
@@ -78,7 +82,7 @@ public class Enlace1 {
             
             obtenerConexion().close();
         } catch (SQLException e) {  
-             System.out.println("Error al obtener PlanPostPagoMinutos");
+             System.out.println("ERROR: no se pudo obtener PlanPostPagoMinutos");
              System.out.println(e.getMessage());  
              
         }  

@@ -1,9 +1,7 @@
-
 package p2;
 
-
 public abstract class PlanCelular {
-    
+
     protected String nombre;
     protected String cedula;
     protected String ciudad;
@@ -12,9 +10,9 @@ public abstract class PlanCelular {
     protected String numero;
     protected double pagoMensual;
 
-    public PlanCelular(String nomPro, String ced, String ciuPro, 
+    public PlanCelular(String nomPro, String ced, String ciuPro,
             String marcaCelu, String modelCelu, String numCelu) {
-        
+
         nombre = nomPro;
         cedula = ced;
         ciudad = ciuPro;
@@ -22,7 +20,7 @@ public abstract class PlanCelular {
         modelo = modelCelu;
         numero = numCelu;
     }
-    
+
     public abstract void calcularPagoMensual();
 
     public void establecerNombre(String n) {
@@ -72,22 +70,28 @@ public abstract class PlanCelular {
     public String obtenerNumero() {
         return numero;
     }
-    
+
     public double obtenerPagoMensual() {
         return pagoMensual;
     }
-    
+
     @Override
     public String toString() {
-        
-        String cadena = String.format("Nombre propietario: %s\n"
-                + "Cedula: %s\n"
-                + "Ciudad: %s\n"
-                + "Marca celular: %s\n"
-                + "Modelo: %s\n"
-                + "Numero: %s\n",
-                nombre, cedula, ciudad, marca, modelo, numero);     
+
+        String cadena = String.format("\tPropietario: %s\n"
+                + "\tCedula: %s\n"
+                + "\tCiudad: %s\n"
+                + "\tMarca celular: %s\n"
+                + "\tModelo celular: %s\n"
+                + "\tNumero celular: %s\n",
+                obtenerNombre(),
+                obtenerCedula(),
+                obtenerCiudad(),
+                obtenerMarca(),
+                obtenerModelo(),
+                obtenerNumero());
+
         return cadena;
     }
-    
+
 }

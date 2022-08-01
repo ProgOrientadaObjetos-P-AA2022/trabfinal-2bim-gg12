@@ -1,50 +1,50 @@
-
 package p2;
 
 public class PlanPostpagoMinMegEco extends PlanCelular {
-    
+
     private int min;
     private double costoMin;
     private int gigas;
-    private double costoXGiga;
-    private int prctjDscto;
+    private double costoGiga;
+    private int descuento;
 
-    public PlanPostpagoMinMegEco(int m, double costoM, int megExpG, 
-            double costoXG, int prctjDsct, String nomPro, String ced, 
+    public PlanPostpagoMinMegEco(int m, double costoM, int meg,
+            double costoG, int des, String nomPro, String ced,
             String ciuPro, String marcaCelu, String modelCelu, String numCelu) {
-        
+
         super(nomPro, ced, ciuPro, marcaCelu, modelCelu, numCelu);
-        min = min;
+        min = m;
         costoMin = costoM;
-        gigas = megExpG;
-        costoXGiga = costoXG;
-        prctjDscto = prctjDsct;
+        gigas = meg;
+        costoGiga = costoG;
+        descuento = des;
+        calcularPagoMensual();
     }
-    
+
     @Override
     public void calcularPagoMensual() {
-        pagoMensual = ((min * costoMin) + (gigas * costoXGiga));
-        pagoMensual = pagoMensual - ((pagoMensual * prctjDscto) / 100);
+        pagoMensual = ((min * costoMin) + (gigas * costoGiga));
+        pagoMensual = pagoMensual - ((pagoMensual * descuento) / 100);
     }
 
     public void establecerMin(int n) {
-        this.min = n;
+        min = n;
     }
 
     public void establecerCostoMin(double n) {
-        this.costoMin = n;
+        costoMin = n;
     }
 
     public void establecerGigas(int n) {
-        this.gigas = n;
+        gigas = n;
     }
 
-    public void establecerCostoXGiga(double n) {
-        this.costoXGiga = n;
+    public void establecerCostoGiga(double n) {
+        costoGiga = n;
     }
 
-    public void establecerPorctjDscto(int n) {
-        this.prctjDscto = n;
+    public void establecerDescuento(int n) {
+        descuento = n;
     }
 
     public int obtenerMin() {
@@ -59,31 +59,37 @@ public class PlanPostpagoMinMegEco extends PlanCelular {
         return gigas;
     }
 
-    public double obtenerCostoXGiga() {
-        return costoXGiga;
+    public double obtenerCostoGiga() {
+        return costoGiga;
     }
 
-    public int obtenerPorctjDscto() {
-        return prctjDscto;
+    public int obtenerDescuento() {
+        return descuento;
     }
-    
+
     @Override
     public String toString() {
-        
+
         String porcentaje = "%";
-        
-        String cadena = String.format("Plan Post Pago Minutos Megas(Económico)\n"
+
+        String cadena = String.format("Plan Post Pago MinutosMegas Económico\n"
                 + "%s"
-                + "Minutos: %d\n"
-                + "Costo por Minuto: %.2f\n"
-                + "Gigas: %d\n"
-                + "Costo por Giga: %.2f\n"
-                + "Porcentaje descuento: %d%s\n"
-                + "Pago Mensual: %.2f\n\n",
-                super.toString(), min, costoMin, gigas, costoXGiga,
-                prctjDscto, porcentaje, pagoMensual);
-        
+                + "\tMinutos: %d\n"
+                + "\tCosto X Minuto: %.2f\n"
+                + "\tGigas: %d\n"
+                + "\tCosto X Giga: %.2f\n"
+                + "\tPorcentaje descuento: %d%s\n"
+                + "\tPago Mensual: %.2f\n"
+                + "--------------------------------\n",
+                super.toString(), 
+                obtenerMin(), 
+                obtenerCostoMin(), 
+                obtenerGigas(), 
+                obtenerCostoGiga(),
+                obtenerDescuento(), porcentaje, 
+                obtenerPagoMensual());
+
         return cadena;
     }
-    
+
 }

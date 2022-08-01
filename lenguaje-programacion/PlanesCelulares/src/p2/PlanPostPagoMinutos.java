@@ -1,23 +1,31 @@
+
 package p2;
 
 public class PlanPostPagoMinutos extends PlanCelular {
-
+    
     private int minN;
     private double costoMinN;
     private int minInt;
     private double costoMinInt;
 
-    public PlanPostPagoMinutos(int min, double costoMN, int minI,
-            double costoMinI, String nomPro, String ced, String ciuPro,
+    public PlanPostPagoMinutos(int min, double costMinN, int mInt, 
+            double costMInt, String nomPro, String ced, String ciuPro, 
             String marcaCelu, String modelCelu, String numCelu) {
-
+        
         super(nomPro, ced, ciuPro, marcaCelu, modelCelu, numCelu);
         minN = min;
-        costoMinN = costoMN;
-        minInt = minI;
-        costoMinInt = costoMinI;
+        costoMinN = costMinN;
+        minInt = mInt;
+        costoMinInt = costMInt;
+        calcularPagoMensual();
     }
-
+    
+    @Override
+    public void calcularPagoMensual() {
+        pagoMensual = (minN * costoMinN) + 
+                (minInt * costoMinInt);
+    }
+    
     public void establecerMinN(int n) {
         minN = n;
     }
@@ -49,25 +57,26 @@ public class PlanPostPagoMinutos extends PlanCelular {
     public double obtenerCostoMinInt() {
         return costoMinInt;
     }
-
-    @Override
-    public void calcularPagoMensual() {
-        pagoMensual = (minN * costoMinN) + (minInt * costoMinInt);
-    }
-
+    
     @Override
     public String toString() {
-
-        String cadena = String.format("Plan Post Pago de Minutos\n"
+        
+        String cadena = String.format("Plan Post Pago Minutos\n"
                 + "%s"
-                + "Minutos (Nacional): %d\n"
-                + "Costo por Minuto(Nacional): %.2f\n"
-                + "Minutos (Internacional): %d\n"
-                + "Costo por Minuto(Internacional): %.2f\n"
-                + "Pago Mensual: %.2f\n\n",
-                super.toString(), minN, costoMinN, minInt,
-                costoMinInt, pagoMensual);
+                + "\tMinutos (Nacional): %d\n"
+                + "\tCosto por Minuto(Nacional): %.2f\n"
+                + "\tMinutos (Internacional): %d\n"
+                + "\tCosto por Minuto(Internacional): %.2f\n"
+                + "\tPago Mensual: %.2f\n"
+                + "--------------------------------\n",
+                super.toString(), 
+                obtenerMinN(), 
+                obtenerCostoMinN(), 
+                obtenerMinInt(), 
+                obtenerCostoMinInt(), 
+                obtenerPagoMensual());
+        
         return cadena;
     }
-
+    
 }

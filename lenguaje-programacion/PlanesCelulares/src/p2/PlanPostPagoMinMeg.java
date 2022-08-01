@@ -7,15 +7,17 @@ public class PlanPostPagoMinMeg extends PlanCelular {
     private int gigas;
     private double costoGiga;
 
-    public PlanPostPagoMinMeg(int m, double costMin, int megExpG,
-            double costG, String nomPro, String ced, String ciuPro,
+    public PlanPostPagoMinMeg(int mn, double costMin, int meg,
+            double cg, String nomPro, String ced, String ciuPro,
             String marcaCelu, String modelCelu, String numCelu) {
 
         super(nomPro, ced, ciuPro, marcaCelu, modelCelu, numCelu);
-        min = m;
+
+        min = mn;
         costoMin = costMin;
-        gigas = megExpG;
-        costoGiga = costG;
+        gigas = meg;
+        costoGiga = cg;
+        calcularPagoMensual();
     }
 
     @Override
@@ -24,19 +26,19 @@ public class PlanPostPagoMinMeg extends PlanCelular {
     }
 
     public void establecerMin(int n) {
-        this.min = n;
+        min = n;
     }
 
     public void establecerCostoMin(double n) {
-        this.costoMin = n;
+        costoMin = n;
     }
 
     public void establecerGigas(int n) {
-        this.gigas = n;
+        gigas = n;
     }
 
-    public void establecerCostoXGiga(double n) {
-        this.costoGiga = n;
+    public void establecerCostoGiga(double n) {
+        costoGiga = n;
     }
 
     public int obtenerMin() {
@@ -51,22 +53,27 @@ public class PlanPostPagoMinMeg extends PlanCelular {
         return gigas;
     }
 
-    public double obtenerCostoXGiga() {
+    public double obtenerCostoGiga() {
         return costoGiga;
     }
 
     @Override
     public String toString() {
 
-        String cadena = String.format("Plan Post Pago de Minutos/Megas\n"
+        String cadena = String.format("Plan Post Pago Minutos Megas\n"
                 + "%s"
-                + "Minutos: %d\n"
-                + "Costo por Minuto: %.2f\n"
-                + "Gigas: %d\n"
-                + "Costo por Giga: %.2f\n"
-                + "Pago Mensual: %.2f\n\n",
-                super.toString(), min, costoMin, gigas, costoGiga,
-                pagoMensual);
+                + "\tMinutos: %d\n"
+                + "\tCosto por Minuto: %.2f\n"
+                + "\tGigas: %d\n"
+                + "\tCosto por Giga: %.2f\n"
+                + "\tPago Mensual: %.2f\n"
+                + "--------------------------------\n",
+                super.toString(),
+                obtenerMin(), 
+                obtenerCostoMin(), 
+                obtenerGigas(), 
+                obtenerCostoGiga(),
+                obtenerPagoMensual());
 
         return cadena;
     }

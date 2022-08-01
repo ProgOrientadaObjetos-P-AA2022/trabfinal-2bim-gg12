@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
-public class Enlace4 {
+public class Enlace2ECO {
     
     private Connection conn;
        
@@ -18,7 +18,7 @@ public class Enlace4 {
 
         try {  
             // db parameters  
-            String url = "jdbc:sqlite:bd/PlanPostPagoMinMegasEco.db";  
+            String url = "jdbc:sqlite:bd/PlanPostPago.db";  
             // create a connection to the database  
             conn = DriverManager.getConnection(url);  
             // System.out.println(conn.isClosed());
@@ -43,19 +43,19 @@ public class Enlace4 {
                     + "Cedula, Ciudad, Marca, Modelo, Numero, Minutos, CostoXMinuto,"
                     + "Gigas, CostoXGiga, Descuento, PagoMensual)"
                     + "values ('%s', '%s', '%s', '%s', '%s', '%s', '%d',"
-                    + "'%.2f', '%d', '%.2f', '%d', '%.2f')", 
+                    + "%s, '%d', %s, '%d', %s)", 
                     pppmme.obtenerNombre(), pppmme.obtenerCedula(), 
                     pppmme.obtenerCiudad(), pppmme.obtenerMarca(), 
                     pppmme.obtenerModelo(), pppmme.obtenerNumero(), 
                     pppmme.obtenerMin(), pppmme.obtenerCostoMin(),
-                    pppmme.obtenerGigas(), pppmme.obtenerCostoXGiga(),
-                    pppmme.obtenerPorctjDscto() ,pppmme.obtenerPagoMensual());
+                    pppmme.obtenerGigas(), pppmme.obtenerCostoGiga(),
+                    pppmme.obtenerDescuento() ,pppmme.obtenerPagoMensual());
             
             statement.executeUpdate(data);
             obtenerConexion().close();
             
         } catch (SQLException e) {  
-             System.err.println("Error al insertar PlanPostpagoMinMegEco");
+             System.err.println("ERROR: no se pudo insertar PlanPostpagoMinMegEco");
              System.out.println(e.getMessage());  
              
         }  
@@ -66,7 +66,7 @@ public class Enlace4 {
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = "Select * from PlanPostPagoMinutosMegasEco ;";
+            String data = "Select * from PlanPostPagoMinutosMegasEco;";
             
             ResultSet rs = statement.executeQuery(data);
             while(rs.next()){
@@ -83,7 +83,7 @@ public class Enlace4 {
             
             obtenerConexion().close();
         } catch (SQLException e) {  
-             System.out.println("Error al obtener PlanPostpagoMinMegEco");
+             System.out.println("ERROR: no se pudo obtener PlanPostpagoMinMegEco");
              System.out.println(e.getMessage());  
              
         }  
