@@ -1,7 +1,7 @@
 
 package p3;
 
-import p2.PlanPostPagoMinMeg;
+import p2.PlanPostPagoMegas;
 import java.sql.Statement;
 import java.sql.Connection;  
 import java.sql.DriverManager;  
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
-public class Enlace1MM {
+public class Enlace2M {
     
     private Connection conn;
        
@@ -34,55 +34,54 @@ public class Enlace1MM {
         return conn;
     }
     
-    public void insertarPlanPostPagoMinMeg(PlanPostPagoMinMeg pppmm) {  
+    public void insertarPlanPostPagoMegas(PlanPostPagoMegas c) {  
   
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = String.format("INSERT INTO PlanPostPagoMinutosMegas (Nombre,"
-                    + "Cedula, Ciudad, Marca, Modelo, Numero, Minutos, CostoXMinuto,"
-                    + "Gigas, CostoXGiga, PagoMensual)"
+            String data = String.format("INSERT INTO PlanPostPagoMegas (Nombre,"
+                    + "Cedula, Ciudad, Marca, Modelo, Numero, Gigas, CostoXGiga,"
+                    + "Tarifa, PagoMensual)"
                     + "values ('%s', '%s', '%s', '%s', '%s', '%s', '%d',"
-                    + "%s, '%d', %s, %s)", 
-                    pppmm.obtenerNombre(), pppmm.obtenerCedula(), 
-                    pppmm.obtenerCiudad(), pppmm.obtenerMarca(), 
-                    pppmm.obtenerModelo(), pppmm.obtenerNumero(), 
-                    pppmm.obtenerMin(), pppmm.obtenerCostoMin(),
-                    pppmm.obtenerGigas(), pppmm.obtenerCostoGiga(),
-                    pppmm.obtenerPagoMensual());
+                    + "%s, %s, %s)", 
+                    c.obtenerNombre(), c.obtenerCedula(), 
+                    c.obtenerCiudad(), c.obtenerMarca(), 
+                    c.obtenerModelo(), c.obtenerNumero(), 
+                    c.obtenerGigas(), c.obtenerCostoGiga(),
+                    c.obtenerTarifaBase(), c.obtenerPagoMensual());
+            
             statement.executeUpdate(data);
             obtenerConexion().close();
             
         } catch (SQLException e) {  
-             System.err.println("ERROR: no se pudo insertar PlanPostPagoMinMeg");
+             System.err.println("ERROR: no se pudo insertar PlanPostPagoMegas");
              System.out.println(e.getMessage());  
              
         }  
     }
     
-    public ArrayList<PlanPostPagoMinMeg> obtenerDataPppmm() {
-        
-        ArrayList<PlanPostPagoMinMeg> lista = new ArrayList<>();
+    public ArrayList<PlanPostPagoMegas> obtenerDataPppMegas() {  
+        ArrayList<PlanPostPagoMegas> lista = new ArrayList<>();
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = "Select * from PlanPostPagoMinutosMegas;";
+            String data = "Select * from PlanPostPagoMegas;";
             
             ResultSet rs = statement.executeQuery(data);
             while(rs.next()){
                 
-                PlanPostPagoMinMeg miPppmm = new PlanPostPagoMinMeg(
-                rs.getInt("Minutos"), rs.getDouble("CostoXMinuto"),
+                PlanPostPagoMegas miPppm = new PlanPostPagoMegas(
                 rs.getInt("Gigas"), rs.getDouble("CostoXGiga"), 
-                rs.getString("Nombre"), rs.getString("Cedula"), 
-                rs.getString("Ciudad"), rs.getString("Marca"),
-                rs.getString("Modelo"), rs.getString("Numero"));
-                lista.add(miPppmm);
+                rs.getDouble("Tarifa"), rs.getString("Nombre"),
+                rs.getString("Cedula"), rs.getString("Ciudad"),
+                rs.getString("Marca"), rs.getString("Modelo"),
+                rs.getString("Numero"));
+                lista.add(miPppm);
             }
             
             obtenerConexion().close();
         } catch (SQLException e) {  
-             System.out.println("ERROR: no se pudo obtener PlanPostPagoMinMeg");
+             System.out.println("ERROR: no se pudo obtener PlanPostPagoMegas");
              System.out.println(e.getMessage());  
              
         }  

@@ -1,7 +1,7 @@
 
 package p3;
 
-import p2.PlanPostPagoMinutos;
+import p2.PlanPostpagoMinMegEco;
 import java.sql.Statement;
 import java.sql.Connection;  
 import java.sql.DriverManager;  
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
-public class Enlace4MIN {
+public class Enlace4ECO {
     
     private Connection conn;
        
@@ -34,55 +34,56 @@ public class Enlace4MIN {
         return conn;
     }
     
-    public void insertarPlanPostPagoMinutos(PlanPostPagoMinutos pppm) {  
+    public void insertarPlanPostPagoMinMegEco(PlanPostpagoMinMegEco c) {  
   
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = String.format("INSERT INTO PlanPostPagoMinutos (Nombre,"
-                    + "Cedula, Ciudad, Marca, Modelo, Numero, MinutosN, CostoXMinN,"
-                    + "MinutosI, CostoXMinI, PagoMensual)"
+            String data = String.format("INSERT INTO PlanPostPagoMinutosMegasEco (Nombre,"
+                    + "Cedula, Ciudad, Marca, Modelo, Numero, Minutos, CostoXMinuto,"
+                    + "Gigas, CostoXGiga, Descuento, PagoMensual)"
                     + "values ('%s', '%s', '%s', '%s', '%s', '%s', '%d',"
-                    + "%s, '%d', %s, %s)", 
-                    pppm.obtenerNombre(), pppm.obtenerCedula(), 
-                    pppm.obtenerCiudad(), pppm.obtenerMarca(), 
-                    pppm.obtenerModelo(), pppm.obtenerNumero(), 
-                    pppm.obtenerMinN(), pppm.obtenerCostoMinN(),
-                    pppm.obtenerMinInt(), pppm.obtenerCostoMinInt(),
-                    pppm.obtenerPagoMensual());
+                    + "%s, '%d', %s, '%d', %s)", 
+                    c.obtenerNombre(), c.obtenerCedula(), 
+                    c.obtenerCiudad(), c.obtenerMarca(), 
+                    c.obtenerModelo(), c.obtenerNumero(), 
+                    c.obtenerMin(), c.obtenerCostoMin(),
+                    c.obtenerGigas(), c.obtenerCostoGiga(),
+                    c.obtenerDescuento() ,c.obtenerPagoMensual());
             
             statement.executeUpdate(data);
             obtenerConexion().close();
             
         } catch (SQLException e) {  
-             System.err.println("ERROR: no se pudo insertar PlanPostPagoMinutos");
+             System.err.println("ERROR: no se pudo insertar PlanPostpagoMinMegEco");
              System.out.println(e.getMessage());  
              
         }  
     }
     
-    public ArrayList<PlanPostPagoMinutos> obtenerDataPppMinutos() {  
-        ArrayList<PlanPostPagoMinutos> lista = new ArrayList<>();
+    public ArrayList<PlanPostpagoMinMegEco> obtenerDataPppmmEco() {  
+        ArrayList<PlanPostpagoMinMegEco> lista = new ArrayList<>();
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = "Select * from PlanPostPagoMinutos;";
+            String data = "Select * from PlanPostPagoMinutosMegasEco;";
             
             ResultSet rs = statement.executeQuery(data);
             while(rs.next()){
                 
-                PlanPostPagoMinutos miPppm = new PlanPostPagoMinutos(
-                rs.getInt("MinutosN"), rs.getDouble("CostoXMinN"),
-                rs.getInt("MinutosI"), rs.getDouble("CostoXMinI"), 
-                rs.getString("Nombre"), rs.getString("Cedula"), 
-                rs.getString("Ciudad"), rs.getString("Marca"),
-                rs.getString("Modelo"), rs.getString("Numero"));
-                lista.add(miPppm);
+                PlanPostpagoMinMegEco miPppmme = new PlanPostpagoMinMegEco(
+                rs.getInt("Minutos"), rs.getDouble("CostoXMinuto"),
+                rs.getInt("Gigas"), rs.getDouble("CostoXGiga"),
+                rs.getInt("Descuento"), rs.getString("Nombre"),
+                rs.getString("Cedula"), rs.getString("Ciudad"),
+                rs.getString("Marca"), rs.getString("Modelo"),
+                rs.getString("Numero"));
+                lista.add(miPppmme);
             }
             
             obtenerConexion().close();
         } catch (SQLException e) {  
-             System.out.println("ERROR: no se pudo obtener PlanPostPagoMinutos");
+             System.out.println("ERROR: no se pudo obtener PlanPostpagoMinMegEco");
              System.out.println(e.getMessage());  
              
         }  

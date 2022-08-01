@@ -18,10 +18,10 @@ public class Principal {
 
         ArrayList<PlanCelular> lista = new ArrayList<>();
 
-        Enlace1MM plan1 = new Enlace1MM();
-        Enlace2ECO plan2 = new Enlace2ECO();
-        Enlace3M plan3 = new Enlace3M();
-        Enlace4MIN plan4 = new Enlace4MIN();
+        Enlace1MIN plan4 = new Enlace1MIN();
+        Enlace2M plan3 = new Enlace2M();
+        Enlace3MM plan1 = new Enlace3MM();
+        Enlace4ECO plan2 = new Enlace4ECO();
 
         System.out.println("DATOS PROPIETARIO");
         System.out.println("Nombre:");
